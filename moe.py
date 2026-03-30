@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 from torch.nn.modules.sparse import Embedding
 import math
 
-tokenizer = AutoTokenizer.from_pretrained("/Users/mithunnayak/Desktop/WORK/MOE/gpt_tokenizer")
+tokenizer = AutoTokenizer.from_pretrained("./gpt_tokenizer")
 # tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2-xl", download=True)
 # tokenizer.save_pretrained("./gpt_tokenizer")
 vocabulary_size = tokenizer.vocab_size
@@ -98,8 +98,6 @@ class Expert(nn.Module):
     def forward(self, x):
         out = self.dropout(self.layer2(self.relu(self.layer1(x))))
         return out
-
-
 
 
 class SparseMOE(nn.Module):
